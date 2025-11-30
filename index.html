@@ -8,6 +8,7 @@
 </head>
 <body>
   <div class="app-shell">
+
     <!-- Top Header / Navigation -->
     <header class="app-header">
       <div class="logo">🍽️ ShareMeal</div>
@@ -22,7 +23,8 @@
     </header>
 
     <main id="app">
-      <!-- HOME / INTRO -->
+
+      <!-- HOME -->
       <section id="section-home" class="section active">
         <div class="section-card">
           <h1>Welcome to ShareMeal</h1>
@@ -31,15 +33,15 @@
             reduce waste, and support neighbours facing food insecurity.
           </p>
           <button class="btn primary" data-section-jump="section-setup">
-            Let&apos;s Get You Set Up
+            Let’s Get You Set Up
           </button>
         </div>
       </section>
 
-      <!-- LET'S GET YOU SET UP -->
+      <!-- SETUP -->
       <section id="section-setup" class="section">
         <div class="section-card">
-          <h1>Let&apos;s Get You Set Up</h1>
+          <h1>Let’s Get You Set Up</h1>
           <p class="lead">
             ShareMeal helps you:
           </p>
@@ -52,10 +54,7 @@
           <div class="card-grid">
             <article class="card">
               <h2>Food Donor</h2>
-              <p>
-                I represent a restaurant, grocery store, or organization with surplus food
-                to share with local food banks.
-              </p>
+              <p>I represent a restaurant, grocery store, or organization with surplus food.</p>
               <button class="btn secondary" data-section-jump="section-donor">
                 Continue as Donor
               </button>
@@ -63,9 +62,7 @@
 
             <article class="card">
               <h2>Food Bank / Community Org</h2>
-              <p>
-                I help distribute food to the community and want to receive or manage donations.
-              </p>
+              <p>I help distribute food to the community and want to manage donations.</p>
               <button class="btn primary" data-section-jump="section-foodbank">
                 Continue as Food Bank
               </button>
@@ -74,42 +71,30 @@
         </div>
       </section>
 
-      <!-- FOOD DONOR FORM -->
+      <!-- DONOR FORM -->
       <section id="section-donor" class="section">
         <div class="section-card">
           <h1>Food Donor Details</h1>
-          <p class="lead">
-            Share how your organization can contribute surplus food. This demo stores
-            data locally in your browser only (no real backend).
-          </p>
-
           <form id="donor-form" class="form">
             <div class="form-row">
-              <label for="donor-name">Organization Name</label>
-              <input id="donor-name" type="text"
-                     placeholder="e.g., GreenLeaf Bistro" required />
+              <label>Organization Name</label>
+              <input id="donor-name" type="text" required />
             </div>
             <div class="form-row">
-              <label for="donor-contact">Contact Name</label>
-              <input id="donor-contact" type="text"
-                     placeholder="Your name" required />
+              <label>Contact Name</label>
+              <input id="donor-contact" type="text" required />
             </div>
             <div class="form-row">
-              <label for="donor-email">Email</label>
-              <input id="donor-email" type="email"
-                     placeholder="you@example.com" required />
+              <label>Email</label>
+              <input id="donor-email" type="email" required />
             </div>
             <div class="form-row">
-              <label for="donor-notes">Types of food / usual availability</label>
-              <textarea id="donor-notes" rows="3"
-                        placeholder="Describe what and when you can donate"></textarea>
+              <label>Notes</label>
+              <textarea id="donor-notes"></textarea>
             </div>
             <button type="submit" class="btn primary">Submit Donor Details</button>
           </form>
-
-          <p id="donor-success" class="success-message" hidden>
-            ✅ Thank you! Your donor information has been saved locally in this browser.
-          </p>
+          <p id="donor-success" class="success-message" hidden>Saved!</p>
         </div>
       </section>
 
@@ -117,76 +102,53 @@
       <section id="section-foodbank" class="section">
         <div class="section-card">
           <h1>Food Bank Registration</h1>
-          <p class="lead">
-            Tell us about your food bank or community organization so ShareMeal can
-            help coordinate donations.
-          </p>
-
           <form id="foodbank-form" class="form">
             <div class="form-row">
-              <label for="fb-name">Food Bank / Organization Name</label>
-              <input id="fb-name" type="text"
-                     placeholder="Community Food Hub" required />
+              <label>Organization Name</label>
+              <input id="fb-name" type="text" required />
             </div>
             <div class="form-row">
-              <label for="fb-contact">Primary Contact</label>
-              <input id="fb-contact" type="text"
-                     placeholder="Name of contact person" required />
+              <label>Contact Name</label>
+              <input id="fb-contact" type="text" required />
             </div>
             <div class="form-row">
-              <label for="fb-email">Email</label>
-              <input id="fb-email" type="email"
-                     placeholder="contact@foodbank.org" required />
+              <label>Email</label>
+              <input id="fb-email" type="email" required />
             </div>
             <div class="form-row">
-              <label for="fb-phone">Phone</label>
-              <input id="fb-phone" type="tel"
-                     placeholder="+1 (555) 123-4567" />
+              <label>Phone</label>
+              <input id="fb-phone" type="tel" />
             </div>
             <div class="form-row">
-              <label for="fb-address">Address</label>
-              <input id="fb-address" type="text"
-                     placeholder="Street, City, Postal Code" />
+              <label>Address</label>
+              <input id="fb-address" type="text" />
             </div>
             <div class="form-row">
-              <label for="fb-hours">Pickup / Distribution Hours</label>
-              <input id="fb-hours" type="text"
-                     placeholder="e.g., Mon–Thu 10am–4pm" />
-            </div>
-            <div class="form-row">
-              <label for="fb-notes">Additional Notes</label>
-              <textarea id="fb-notes" rows="3"
-                        placeholder="Accessibility, storage capacity, special instructions, etc."></textarea>
+              <label>Hours</label>
+              <input id="fb-hours" type="text" />
             </div>
             <button type="submit" class="btn primary">Submit Registration</button>
           </form>
-
-          <p id="foodbank-success" class="success-message" hidden>
-            ✅ Food bank registration saved locally for this demo. In a full app,
-            this would go to a secure backend.
-          </p>
+          <p id="foodbank-success" class="success-message" hidden>Saved!</p>
         </div>
       </section>
 
-      <!-- DIRECTORY SECTION -->
+      <!-- DIRECTORY -->
       <section id="section-directory" class="section">
         <div class="section-card">
           <h1>Directory</h1>
-          <p class="lead">
-            View food banks and donors that have been registered in this browser.
-          </p>
-
           <div class="directory-grid">
             <div>
               <h2>Food Banks</h2>
               <div id="foodbanks-list" class="directory-list empty-state">
-                <p>No food banks registered yet.</p>
+                <p>No entries yet.</p>
               </div>
             </div>
+
             <div>
               <h2>Donors</h2>
               <div id="donors-list" class="directory-list empty-state">
-                <p>No donors registered yet.</p>
+                <p>No entries yet.</p>
               </div>
             </div>
           </div>
@@ -197,45 +159,37 @@
       <section id="section-board" class="section">
         <div class="section-card">
           <h1>Discussion Board</h1>
-          <p class="lead">
-            A simple board where donors and food banks can post updates,
-            requests, or coordination notes. Posts are stored only in this
-            browser for demo purposes.
-          </p>
 
           <form id="post-form" class="form">
             <div class="form-row">
-              <label for="post-name">Your Name / Organization</label>
-              <input id="post-name" type="text"
-                     placeholder="e.g., GreenLeaf Bistro or Community Food Hub" required />
+              <label>Your Name / Organization</label>
+              <input id="post-name" required />
             </div>
             <div class="form-row">
-              <label for="post-role">Role</label>
+              <label>Role</label>
               <select id="post-role">
-                <option value="Food Donor">Food Donor</option>
-                <option value="Food Bank">Food Bank</option>
-                <option value="Community Org">Community Org</option>
-                <option value="Other">Other</option>
+                <option>Food Donor</option>
+                <option>Food Bank</option>
+                <option>Community Org</option>
               </select>
             </div>
             <div class="form-row">
-              <label for="post-message">Message</label>
-              <textarea id="post-message" rows="3"
-                        placeholder="Share available meals, requests, or coordination notes."
-                        required></textarea>
+              <label>Message</label>
+              <textarea id="post-message" required></textarea>
             </div>
             <button type="submit" class="btn primary">Post to Board</button>
           </form>
 
           <div id="posts-list" class="posts-list empty-state">
-            <p>No posts yet. Be the first to share an update!</p>
+            <p>No posts yet.</p>
           </div>
         </div>
       </section>
+
     </main>
 
     <footer class="app-footer">
-      <small>ShareMeal – demo web experience. All data is stored only in your browser.</small>
+      <small>ShareMeal — All data is stored locally in your browser.</small>
     </footer>
   </div>
 
