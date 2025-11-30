@@ -75,6 +75,7 @@
       <section id="section-donor" class="section">
         <div class="section-card">
           <h1>Food Donor Details</h1>
+          <p class="lead">Submit your donor info or edit an existing entry from the Directory tab.</p>
           <form id="donor-form" class="form">
             <div class="form-row">
               <label>Organization Name</label>
@@ -90,11 +91,13 @@
             </div>
             <div class="form-row">
               <label>Notes</label>
-              <textarea id="donor-notes"></textarea>
+              <textarea id="donor-notes" placeholder="Food types, usual times, etc."></textarea>
             </div>
-            <button type="submit" class="btn primary">Submit Donor Details</button>
+            <button type="submit" class="btn primary" id="donor-submit-btn">
+              Submit Donor Details
+            </button>
           </form>
-          <p id="donor-success" class="success-message" hidden>Saved!</p>
+          <p id="donor-success" class="success-message" hidden>✅ Donor saved.</p>
         </div>
       </section>
 
@@ -102,6 +105,7 @@
       <section id="section-foodbank" class="section">
         <div class="section-card">
           <h1>Food Bank Registration</h1>
+          <p class="lead">Submit your food bank info or edit an existing entry from the Directory tab.</p>
           <form id="foodbank-form" class="form">
             <div class="form-row">
               <label>Organization Name</label>
@@ -125,11 +129,13 @@
             </div>
             <div class="form-row">
               <label>Hours</label>
-              <input id="fb-hours" type="text" />
+              <input id="fb-hours" type="text" placeholder="e.g., Mon–Thu 10am–4pm" />
             </div>
-            <button type="submit" class="btn primary">Submit Registration</button>
+            <button type="submit" class="btn primary" id="fb-submit-btn">
+              Submit Registration
+            </button>
           </form>
-          <p id="foodbank-success" class="success-message" hidden>Saved!</p>
+          <p id="foodbank-success" class="success-message" hidden>✅ Food bank saved.</p>
         </div>
       </section>
 
@@ -137,6 +143,10 @@
       <section id="section-directory" class="section">
         <div class="section-card">
           <h1>Directory</h1>
+          <p class="lead">
+            View, edit, or remove registered food banks and donors. Use the edit button to load data
+            into the form for updating.
+          </p>
           <div class="directory-grid">
             <div>
               <h2>Food Banks</h2>
@@ -159,6 +169,9 @@
       <section id="section-board" class="section">
         <div class="section-card">
           <h1>Discussion Board</h1>
+          <p class="lead">
+            Share available meals, requests, or coordination notes. You can edit or delete your posts.
+          </p>
 
           <form id="post-form" class="form">
             <div class="form-row">
@@ -171,13 +184,16 @@
                 <option>Food Donor</option>
                 <option>Food Bank</option>
                 <option>Community Org</option>
+                <option>Other</option>
               </select>
             </div>
             <div class="form-row">
               <label>Message</label>
               <textarea id="post-message" required></textarea>
             </div>
-            <button type="submit" class="btn primary">Post to Board</button>
+            <button type="submit" class="btn primary" id="post-submit-btn">
+              Post to Board
+            </button>
           </form>
 
           <div id="posts-list" class="posts-list empty-state">
@@ -189,7 +205,7 @@
     </main>
 
     <footer class="app-footer">
-      <small>ShareMeal — All data is stored locally in your browser.</small>
+      <small>ShareMeal — demo only. All data stays in your browser.</small>
     </footer>
   </div>
 
