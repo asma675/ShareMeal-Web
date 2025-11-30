@@ -16,6 +16,8 @@
         <button class="nav-link" data-section="section-setup">Get Set Up</button>
         <button class="nav-link" data-section="section-donor">Food Donor</button>
         <button class="nav-link" data-section="section-foodbank">Food Bank</button>
+        <button class="nav-link" data-section="section-directory">Directory</button>
+        <button class="nav-link" data-section="section-board">Discussion Board</button>
       </nav>
     </header>
 
@@ -165,10 +167,75 @@
           </p>
         </div>
       </section>
+
+      <!-- DIRECTORY SECTION -->
+      <section id="section-directory" class="section">
+        <div class="section-card">
+          <h1>Directory</h1>
+          <p class="lead">
+            View food banks and donors that have been registered in this browser.
+          </p>
+
+          <div class="directory-grid">
+            <div>
+              <h2>Food Banks</h2>
+              <div id="foodbanks-list" class="directory-list empty-state">
+                <p>No food banks registered yet.</p>
+              </div>
+            </div>
+            <div>
+              <h2>Donors</h2>
+              <div id="donors-list" class="directory-list empty-state">
+                <p>No donors registered yet.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DISCUSSION BOARD -->
+      <section id="section-board" class="section">
+        <div class="section-card">
+          <h1>Discussion Board</h1>
+          <p class="lead">
+            A simple board where donors and food banks can post updates,
+            requests, or coordination notes. Posts are stored only in this
+            browser for demo purposes.
+          </p>
+
+          <form id="post-form" class="form">
+            <div class="form-row">
+              <label for="post-name">Your Name / Organization</label>
+              <input id="post-name" type="text"
+                     placeholder="e.g., GreenLeaf Bistro or Community Food Hub" required />
+            </div>
+            <div class="form-row">
+              <label for="post-role">Role</label>
+              <select id="post-role">
+                <option value="Food Donor">Food Donor</option>
+                <option value="Food Bank">Food Bank</option>
+                <option value="Community Org">Community Org</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="post-message">Message</label>
+              <textarea id="post-message" rows="3"
+                        placeholder="Share available meals, requests, or coordination notes."
+                        required></textarea>
+            </div>
+            <button type="submit" class="btn primary">Post to Board</button>
+          </form>
+
+          <div id="posts-list" class="posts-list empty-state">
+            <p>No posts yet. Be the first to share an update!</p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="app-footer">
-      <small>ShareMeal – demo web experience. No real data is transmitted.</small>
+      <small>ShareMeal – demo web experience. All data is stored only in your browser.</small>
     </footer>
   </div>
 
