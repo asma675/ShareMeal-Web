@@ -1,268 +1,244 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ShareMeal – Community Food Support</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Header / Navigation -->
+    <header class="app-header">
+      <div class="logo">🍽️ ShareMeal</div>
+      <nav class="top-nav">
+        <button class="nav-link active" data-section="section-home">Home</button>
+        <button class="nav-link" data-section="section-setup">Get Set Up</button>
+        <button class="nav-link" data-section="section-donor">Food Donor</button>
+        <button class="nav-link" data-section="section-foodbank">Food Bank</button>
+        <button class="nav-link" data-section="section-directory">Directory</button>
+        <button class="nav-link" data-section="section-board">Discussion Board</button>
+      </nav>
+    </header>
 
-:root {
-  --bg: #050816;
-  --card-bg: rgba(15, 23, 42, 0.9);
-  --accent: #38bdf8;
-  --accent-strong: #0ea5e9;
-  --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
-  --border-subtle: rgba(148, 163, 184, 0.35);
-  --success: #4ade80;
-  --radius-lg: 18px;
-  --radius-pill: 999px;
-  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
-  --transition-fast: 160ms ease-out;
-  --transition-slow: 240ms ease;
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Segoe UI", sans-serif;
-}
+    <main id="app">
+      <!-- HOME / INTRO -->
+      <section id="section-home" class="section active">
+        <div class="section-card">
+          <h1>Welcome to ShareMeal</h1>
+          <p class="lead">
+            A simple way for food banks and community partners to coordinate surplus meals,
+            reduce waste, and support neighbours facing food insecurity.
+          </p>
+          <button class="btn primary" data-section-jump="section-setup">
+            Let&apos;s Get You Set Up
+          </button>
+        </div>
+      </section>
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: var(--font-sans);
-  background: radial-gradient(circle at top left, #1e293b 0, #020617 45%, #000 100%);
-  color: var(--text-main);
-}
+      <!-- LET'S GET YOU SET UP -->
+      <section id="section-setup" class="section">
+        <div class="section-card">
+          <h1>Let&apos;s Get You Set Up</h1>
+          <p class="lead">
+            ShareMeal helps you:
+          </p>
+          <ul class="feature-list">
+            <li>Register food banks and pickup locations</li>
+            <li>Track available meals and quantities</li>
+            <li>Coordinate donations with local partners</li>
+          </ul>
 
-body {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-}
+          <div class="card-grid">
+            <article class="card">
+              <h2>Food Donor</h2>
+              <p>
+                I represent a restaurant, grocery store, or organization with surplus food
+                to share with local food banks.
+              </p>
+              <button class="btn secondary" data-section-jump="section-donor">
+                Continue as Donor
+              </button>
+            </article>
 
-.app-shell {
-  min-height: 100vh;
-  max-width: 960px;
-  width: 100%;
-  padding: 24px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
+            <article class="card">
+              <h2>Food Bank / Community Org</h2>
+              <p>
+                I help distribute food to the community and want to receive or manage donations.
+              </p>
+              <button class="btn primary" data-section-jump="section-foodbank">
+                Continue as Food Bank
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
 
-/* HEADER + NAV */
+      <!-- FOOD DONOR FORM -->
+      <section id="section-donor" class="section">
+        <div class="section-card">
+          <h1>Food Donor Details</h1>
+          <p class="lead">
+            Share how your organization can contribute surplus food. This demo stores
+            data locally in your browser only (no real backend).
+          </p>
 
-.app-header {
-  padding: 12px 16px;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(8, 47, 73, 0.9));
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.7);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+          <form id="donor-form" class="form">
+            <div class="form-row">
+              <label for="donor-name">Organization Name</label>
+              <input id="donor-name" type="text"
+                     placeholder="e.g., GreenLeaf Bistro" required />
+            </div>
+            <div class="form-row">
+              <label for="donor-contact">Contact Name</label>
+              <input id="donor-contact" type="text"
+                     placeholder="Your name" required />
+            </div>
+            <div class="form-row">
+              <label for="donor-email">Email</label>
+              <input id="donor-email" type="email"
+                     placeholder="you@example.com" required />
+            </div>
+            <div class="form-row">
+              <label for="donor-notes">Types of food / usual availability</label>
+              <textarea id="donor-notes" rows="3"
+                        placeholder="Describe what and when you can donate"></textarea>
+            </div>
+            <button type="submit" class="btn primary">Submit Donor Details</button>
+          </form>
 
-.logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-}
+          <p id="donor-success" class="success-message" hidden>
+            ✅ Thank you! Your donor information has been saved locally in this browser.
+          </p>
+        </div>
+      </section>
 
-.top-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
+      <!-- FOOD BANK FORM -->
+      <section id="section-foodbank" class="section">
+        <div class="section-card">
+          <h1>Food Bank Registration</h1>
+          <p class="lead">
+            Tell us about your food bank or community organization so ShareMeal can
+            help coordinate donations.
+          </p>
 
-.nav-link {
-  padding: 6px 12px;
-  border-radius: var(--radius-pill);
-  border: 1px solid transparent;
-  background: transparent;
-  color: var(--text-muted);
-  font-size: 0.82rem;
-  cursor: pointer;
-  transition: background var(--transition-fast), border-color var(--transition-fast),
-    color var(--transition-fast), transform var(--transition-fast);
-}
+          <form id="foodbank-form" class="form">
+            <div class="form-row">
+              <label for="fb-name">Food Bank / Organization Name</label>
+              <input id="fb-name" type="text"
+                     placeholder="Community Food Hub" required />
+            </div>
+            <div class="form-row">
+              <label for="fb-contact">Primary Contact</label>
+              <input id="fb-contact" type="text"
+                     placeholder="Name of contact person" required />
+            </div>
+            <div class="form-row">
+              <label for="fb-email">Email</label>
+              <input id="fb-email" type="email"
+                     placeholder="contact@foodbank.org" required />
+            </div>
+            <div class="form-row">
+              <label for="fb-phone">Phone</label>
+              <input id="fb-phone" type="tel"
+                     placeholder="+1 (555) 123-4567" />
+            </div>
+            <div class="form-row">
+              <label for="fb-address">Address</label>
+              <input id="fb-address" type="text"
+                     placeholder="Street, City, Postal Code" />
+            </div>
+            <div class="form-row">
+              <label for="fb-hours">Pickup / Distribution Hours</label>
+              <input id="fb-hours" type="text"
+                     placeholder="e.g., Mon–Thu 10am–4pm" />
+            </div>
+            <div class="form-row">
+              <label for="fb-notes">Additional Notes</label>
+              <textarea id="fb-notes" rows="3"
+                        placeholder="Accessibility, storage capacity, special instructions, etc."></textarea>
+            </div>
+            <button type="submit" class="btn primary">Submit Registration</button>
+          </form>
 
-.nav-link:hover {
-  background: rgba(15, 23, 42, 0.8);
-  color: var(--text-main);
-}
+          <p id="foodbank-success" class="success-message" hidden>
+            ✅ Food bank registration saved locally for this demo. In a full app,
+            this would go to a secure backend.
+          </p>
+        </div>
+      </section>
 
-.nav-link.active {
-  background: rgba(8, 47, 73, 0.9);
-  border-color: rgba(56, 189, 248, 0.9);
-  color: var(--text-main);
-  transform: translateY(-1px);
-}
+      <!-- DIRECTORY SECTION -->
+      <section id="section-directory" class="section">
+        <div class="section-card">
+          <h1>Directory</h1>
+          <p class="lead">
+            View food banks and donors that have been registered in this browser.
+          </p>
 
-@media (min-width: 640px) {
-  .app-header {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
+          <div class="directory-grid">
+            <div>
+              <h2>Food Banks</h2>
+              <div id="foodbanks-list" class="directory-list empty-state">
+                <p>No food banks registered yet.</p>
+              </div>
+            </div>
+            <div>
+              <h2>Donors</h2>
+              <div id="donors-list" class="directory-list empty-state">
+                <p>No donors registered yet.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-/* SECTIONS */
+      <!-- DISCUSSION BOARD -->
+      <section id="section-board" class="section">
+        <div class="section-card">
+          <h1>Discussion Board</h1>
+          <p class="lead">
+            A simple board where donors and food banks can post updates,
+            requests, or coordination notes. Posts are stored only in this
+            browser for demo purposes.
+          </p>
 
-#app {
-  flex: 1;
-}
+          <form id="post-form" class="form">
+            <div class="form-row">
+              <label for="post-name">Your Name / Organization</label>
+              <input id="post-name" type="text"
+                     placeholder="e.g., GreenLeaf Bistro or Community Food Hub" required />
+            </div>
+            <div class="form-row">
+              <label for="post-role">Role</label>
+              <select id="post-role">
+                <option value="Food Donor">Food Donor</option>
+                <option value="Food Bank">Food Bank</option>
+                <option value="Community Org">Community Org</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="post-message">Message</label>
+              <textarea id="post-message" rows="3"
+                        placeholder="Share available meals, requests, or coordination notes."
+                        required></textarea>
+            </div>
+            <button type="submit" class="btn primary">Post to Board</button>
+          </form>
 
-.section {
-  display: none;
-}
+          <div id="posts-list" class="posts-list empty-state">
+            <p>No posts yet. Be the first to share an update!</p>
+          </div>
+        </div>
+      </section>
+    </main>
 
-.section.active {
-  display: block;
-  animation: fadeInUp var(--transition-slow);
-}
+    <footer class="app-footer">
+      <small>ShareMeal – demo web experience. All data is stored only in your browser.</small>
+    </footer>
+  </div>
 
-.section-card {
-  background: radial-gradient(circle at top, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.96));
-  border-radius: calc(var(--radius-lg) + 2px);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-soft);
-  padding: 24px 18px;
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-@media (min-width: 640px) {
-  .section-card {
-    padding: 28px 28px 24px;
-  }
-}
-
-h1 {
-  margin: 0 0 8px;
-  font-size: 1.7rem;
-}
-
-.lead {
-  margin: 0 0 16px;
-  color: var(--text-muted);
-  font-size: 0.98rem;
-  line-height: 1.5;
-}
-
-/* Feature list */
-
-.feature-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px;
-}
-
-.feature-list li {
-  margin-bottom: 8px;
-  padding-left: 20px;
-  position: relative;
-  font-size: 0.95rem;
-}
-
-.feature-list li::before {
-  content: "•";
-  position: absolute;
-  left: 4px;
-  color: var(--accent-strong);
-}
-
-/* Cards */
-
-.card-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-
-@media (min-width: 720px) {
-  .card-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-.card {
-  background: linear-gradient(145deg, var(--card-bg), rgba(15, 23, 42, 0.96));
-  border-radius: var(--radius-lg);
-  padding: 16px 16px 14px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.85);
-}
-
-/* Buttons */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 18px;
-  border-radius: var(--radius-pill);
-  border: 1px solid transparent;
-  font-size: 0.92rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-    background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
-}
-
-.btn.primary {
-  background: radial-gradient(circle at top left, var(--accent-strong), var(--accent));
-  color: #0b1120;
-  box-shadow: 0 12px 32px rgba(56, 189, 248, 0.55);
-}
-
-.btn.primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 18px 40px rgba(56, 189, 248, 0.7);
-}
-
-.btn.secondary {
-  background: rgba(15, 23, 42, 0.9);
-  border-color: rgba(148, 163, 184, 0.6);
-  color: var(--text-main);
-}
-
-.btn.secondary:hover {
-  background: rgba(15, 23, 42, 1);
-  border-color: var(--accent-strong);
-}
-
-/* Forms */
-
-.form {
-  margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.form-row {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-label {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-}
-
-input,
-textarea {
-  padding: 8px 10px;
-  border-radius: 10px;
-  border: 1px solid rgba(148, 163, 184, 0.6);
-  background: rgba(15, 23, 42, 0.85);
-  color: var(--text-main);
-  font-size: 0.9rem;
-  outline: none;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
-    transform var(--transition-fast);
-}
-
-input:focus,
-textarea:focus {
-  border-color: var(--accen
+  <script src="app.js"></script>
+</body>
+</html>
