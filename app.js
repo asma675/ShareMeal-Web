@@ -1,42 +1,37 @@
-// Simple SPA-style navigation and in-browser storage for the ShareMeal web demo
+// Show a specific section and update nav active state
+function showSection(id) {
+  document.querySelectorAll(".section").forEach((sec) => {
+    sec.classList.toggle("active", sec.id === id);
+  });
 
-function showScreen(id) {
-  document.querySelectorAll(".screen").forEach((section) => {
-    section.classList.toggle("active", section.id === id);
+  document.querySelectorAll(".nav-link").forEach((btn) => {
+    btn.classList.toggle("active", btn.getAttribute("data-section") === id);
   });
 }
 
-// Navigation buttons
+// Header nav clicks
 document.addEventListener("click", (event) => {
-  const navTarget = event.target.closest("[data-nav]");
-  const roleSelect = event.target.closest("[data-role-select]");
+  const navBtn = event.target.closest(".nav-link");
+  const jumpBtn = event.target.closest("[data-section-jump]");
 
-  if (event.target.id === "btn-intro-start") {
-    showScreen("screen-welcome");
-  } else if (event.target.id === "btn-welcome-next") {
-    showScreen("screen-choose-role");
-  } else if (navTarget) {
-    const target = navTarget.getAttribute("data-nav");
-    if (target === "intro") showScreen("screen-intro");
-    if (target === "welcome") showScreen("screen-welcome");
-    if (target === "choose-role") showScreen("screen-choose-role");
-  } else if (roleSelect) {
-    const role = roleSelect.getAttribute("data-role-select");
-    if (role === "donor") {
-      showScreen("screen-donor");
-    } else if (role === "foodbank") {
-      showScreen("screen-foodbank");
-    }
+  if (navBtn) {
+    const target = navBtn.getAttribute("data-section");
+    showSection(target);
+  }
+
+  if (jumpBtn) {
+    const target = jumpBtn.getAttribute("data-section-jump");
+    showSection(target);
   }
 });
 
-// Handle donor form submission
+// Donor form handling
 const donorForm = document.getElementById("donor-form");
 const donorSuccess = document.getElementById("donor-success");
 
 if (donorForm) {
-  donorForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+  donorForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
     const data = {
       organization: document.getElementById("donor-name").value.trim(),
@@ -46,7 +41,6 @@ if (donorForm) {
       createdAt: new Date().toISOString(),
     };
 
-    // Store in localStorage for this demo
     const existing = JSON.parse(localStorage.getItem("sharemeal_donors") || "[]");
     existing.push(data);
     localStorage.setItem("sharemeal_donors", JSON.stringify(existing));
@@ -56,13 +50,13 @@ if (donorForm) {
   });
 }
 
-// Handle food bank form submission
-const foodbankForm = document.getElementById("foodbank-form");
-const foodbankSuccess = document.getElementById("foodbank-success");
+// Food bank form handling
+const fbForm = document.getElementById("foodbank-form");
+const fbSuccess = document.getElementById("foodbank-success");
 
-if (foodbankForm) {
-  foodbankForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+if (fbForm) {
+  fbForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
     const data = {
       name: document.getElementById("fb-name").value.trim(),
@@ -79,10 +73,10 @@ if (foodbankForm) {
     existing.push(data);
     localStorage.setItem("sharemeal_foodbanks", JSON.stringify(existing));
 
-    foodbankForm.reset();
-    foodbankSuccess.hidden = false;
+    fbForm.reset();
+    fbSuccess.hidden = false;
   });
 }
 
-// Initial screen
-showScreen("screen-intro");
+// Start on Home
+showSection("section-home");
